@@ -14,8 +14,11 @@ var sampleData=[
 {'bill_no': '00007', 'bill_date': '2023-12-04', 'code':'2',name:'Ali','amount': 2000, 'discount': 200, 'net_total': 1800}
 ]
 //You need to pass minimum one column for grouping
-var groupBy = ["bill_date", "code"]   //group by columns, array
-var groupColValue = { 'code': ['code', 'name'] } //columns values to show in grouping row
+//group by columns, array
+var groupBy = ["bill_date", "code"]
+
+//columns values to show in grouping row
+var groupColValue = { 'code': ['code', 'name'] } 
 
 //Columns and their labels to show on header
 var columnsAndLabels  = {
@@ -27,13 +30,18 @@ var columnsAndLabels  = {
 	"discount": "Discount",
 	"net_total": "Net Total"
 }
-var sumColumns = ['amount', 'discount', 'net_total'] //Sum columns in grouping row and in Total row 
+//Sum columns in grouping row and in Total row 
+var sumColumns = ['amount', 'discount', 'net_total'] 
 
-var showTotal = true //show Total Row of Sum columns
+//show Total Row of Sum columns
+var showTotal = true
+
 //use JsonToHTMLTable to get HTML Table from json data, and configurations
 var jsonToHTML = new JsonToHTMLTable({data:sampleData, groups:groupBy, groupRowValues: groupColValue, columnLabels: columnsAndLabels, sumColumns: sumColumns, showTotal: showTotal})
+
 //getHtmlTable function will first create group in json data, then it will convert to HTML Table
 var tableHtml =  jsonToHTML.getHtmlTable()
+
 //Suppose you have <div id="tableContainer"></div>  then use the following line to show content inside div
 document.getElementById('tableContainer').innerHTML = tableHtml;
 ```
